@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+
 const styles = {
   bold: { fontWeight: "bold" },
   italic: { fontStyle: "italic" },
@@ -11,12 +12,17 @@ const stylings = ["bold", "italic", "underline"];
 const colors = ["yellow", "blue", "red", "black", "purple"];
 
 function App() {
-  const [text, setText] = useState("");
+  let [text, setText] = useState("black");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
 
   const stylingBoxes = stylings.map((style) => (
-    <button className="btn btn-light" style={styles[style]} key={style}>
+    <button
+      className="btn btn-light"
+      style={styles[style]}
+      key={style}
+      onClick={() => setStyle(style)}
+    >
       {style}
     </button>
   ));
@@ -25,24 +31,27 @@ function App() {
     <button
       style={{ backgroundColor: color, height: 30, width: 30 }}
       key={color}
+      onClick={() => setColor(color)}
     />
   ));
 
   return (
     <div className="App">
-      <div className="my-3" onClick={() => console.log("You clicked a style")}>
-        {stylingBoxes}
-      </div>
+      <h1 className="title">Text Editor</h1>
+      <div className="my-3">{stylingBoxes}</div>
       <textarea
-        setText={setText}
-        onChange={(event) => {
-          setText(event.target.value);
+        rows="4"
+        cols="50"
+        style={{
+          color: color,
+          fontWeight: style.includes("bold") ? "bold" : "",
+          fontStyle: style.includes("italic") ? "italic" : "",
+          textDecorationLine: style.includes("underline") ? "underline" : "",
+          fontSize: 30,
         }}
-        placeholder="Try me!"
+        onChange={(event) => setText(event.target.value)}
       />
-      <div className="my-3" onClick={() => console.log("You clicked a color")}>
-        {colorBoxes}
-      </div>
+      <div className="my-3">{colorBoxes}</div>
     </div>
   );
 }

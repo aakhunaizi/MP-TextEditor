@@ -2,15 +2,11 @@
   text-align: center;
 }
 
+.btn-light:focus {
+  background-color: #80a1d4;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.title {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
