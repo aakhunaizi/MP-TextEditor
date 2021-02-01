@@ -2,11 +2,14 @@
   text-align: center;
 }
 
-.btn-light:focus {
-  background-color: #80a1d4;
-}
-
 .title {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+textarea {
+  white-space: normal;
+  text-align: justify;
+  -moz-text-align-last: center; /* Firefox 12+ */
+  text-align-last: center;
 }
